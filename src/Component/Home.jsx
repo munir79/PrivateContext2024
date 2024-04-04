@@ -1,15 +1,18 @@
 import { useContext } from "react";
 import { AuthContext } from "../PrivateContext/AuthProvider";
+import { Link } from "react-router-dom";
 
 
 
 const Home = () => {
-const AuthInfo=useContext(AuthContext);
-console.log(AuthInfo);
+const {user}=useContext(AuthContext);
+
 
     return (
         <div>
-           <h3> This is Home For:{AuthInfo.Name} </h3>
+        {
+            user?<p>{user.email}</p>:<Link to='/login'><button>LogIn</button></Link>
+        }
           
         </div>
     );
